@@ -3,6 +3,8 @@
 # tedcowan@weber.edu
 # 385 204-6655
 
+set-strictmode -version latest
+
 if ($args.length -lt 2) {
 	write-Output("Usage: ./f.ps1 path/to/output/file recordcount")
 	exit 1
@@ -34,7 +36,7 @@ catch {
     exit 1
 }
 
-write-output ("Writing $($recordCount) records to the output file")
+Write-Output ("Writing $($recordCount) records to the output file")
 
 function WriteToFile ($outputString)
 {
@@ -42,7 +44,7 @@ function WriteToFile ($outputString)
         add-content -path $outputFile -value $outputString 
     }
     catch {
-        write-output "Write failed to file $($outputFile): $($_)"
+        Write-Output "Write failed to file $($outputFile): $($_)"
         exit 1
     }
 }
